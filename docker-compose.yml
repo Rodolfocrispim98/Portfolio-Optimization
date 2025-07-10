@@ -1,0 +1,16 @@
+version: '3.8'  # Compose version
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_container
+    ports:
+      - "1433:1433"  # Maps the local port to the container port
+    environment:
+      ACCEPT_EULA: "Y"  
+      SA_PASSWORD: "StrongPassword123!"  # Pass for 'sa' user
+    volumes:
+      - sql_data:/var/opt/mssql 
+
+volumes:
+  sql_data:  # Volume to store the database data
